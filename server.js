@@ -79,8 +79,7 @@ client.login(DISCORD_TOKEN);
 client.on("message", message => {
   if (
     // the program currently check if the message's from a bot to check for duplicates. This isn't the best method but it's good enough. A webhook counts as a bot in the discord api, don't ask me why.
-    message.channel.id === discordChannelId &&
-    message.author.bot === false
+    message.channel.id === discordChannelId
   ) {
     let mentioned_usernames = []
 for(let mention of message.mentions.users){mentioned_usernames.push("@"+mention[1].username)}
@@ -102,7 +101,7 @@ var photoUrl = "";
 api.on("message", function(message) {
   // console.log(message)
   var filePath = ""
-  if (message.chat.id == telegramChatId && message.from.is_bot == false) {
+  if (message.chat.id == telegramChatId) {
         // this part gets the user profile photos as the variable names suggest
         let getProfilePic = new Promise(function(resolve, reject) {
           var profilePhotos = api.getUserProfilePhotos({ user_id: message.from.id });
